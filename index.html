@@ -318,12 +318,12 @@ function renderPagination(totalPages) {
   html += '<button class="page-btn ' + (page===totalPages?'disabled':'') + '" id="btn-next">›</button>';
   pag.innerHTML = html;
   pag.querySelectorAll('[data-p]').forEach(function(b) {
-    b.addEventListener('click', function() { page = +b.dataset.p; render(); window.scrollTo(0,0); });
+    b.addEventListener('click', function() { page = +b.dataset.p; render(); });
   });
   var prev = pag.querySelector('#btn-prev');
   var next = pag.querySelector('#btn-next');
-  if (prev) prev.addEventListener('click', function() { if(page>1){page--;render();window.scrollTo(0,0);} });
-  if (next) next.addEventListener('click', function() { if(page<totalPages){page++;render();window.scrollTo(0,0);} });
+  if (prev) prev.addEventListener('click', function() { if(page>1){page--;render();} });
+  if (next) next.addEventListener('click', function() { if(page<totalPages){page++;render();} });
 }
 
 async function openModal(id) {
