@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dabeen Kweon — Strategy Archive</title>
+<meta name="description" content="광고·플랫폼·비즈니스 전략을 분석한 Dabeen Kweon의 인사이트 아카이브">
+<meta property="og:title" content="Dabeen Kweon — Strategy Archive">
+<meta property="og:description" content="광고·플랫폼·비즈니스 전략을 분석한 인사이트 콘텐츠">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --purple: #534AB7; --purple-light: #EEEDFE; --purple-border: #AFA9EC; --purple-dark: #3C3289;
+  --text-primary: #1A1A1A; --text-secondary: #555550; --text-muted: #999990;
+  --bg: #FAFAF8; --bg-card: #FFFFFF; --bg-secondary: #F3F3F0;
+  --border: rgba(0,0,0,0.1); --border-hover: rgba(0,0,0,0.2);
+  --radius: 12px; --radius-sm: 6px; --radius-pill: 99px;
+}
+body { font-family: -apple-system, 'Apple SD Gothic Neo', 'Pretendard', sans-serif; background: var(--bg); color: var(--text-primary); line-height: 1.6; min-height: 100vh; }
+.container { max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+
+/* ── HERO ── */
+.eyebrow { font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.4rem; }
+h1 { font-size: clamp(24px, 4vw, 32px); font-weight: 500; color: var(--text-primary); margin-bottom: 1.25rem; letter-spacing: -0.02em; }
+.desc { font-size: 13px; color: var(--text-secondary); line-height: 1.85; }
+.desc strong { font-weight: 500; color: var(--text-primary); }
+
+/* ── META BAR ── */
+.meta-bar { display: flex; align-items: center; flex-wrap: wrap; gap: 0; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 0.5px solid var(--border); }
+.li-link { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-secondary); text-decoration: none; margin-right: 1.5rem; }
+.li-link:hover { color: var(--text-primary); }
+.meta-divider { width: 0.5px; height: 24px; background: var(--border); margin: 0 1.1rem; }
+.meta-stat { display: flex; flex-direction: column; align-items: center; }
+.meta-stat-num { font-size: 18px; font-weight: 500; color: var(--text-primary); }
+.meta-stat-label { font-size: 10px; color: var(--text-muted); margin-top: 1px; }
+
+/* ── WHY SECTION ── */
+.why-section { margin: 2.5rem 0; }
+.section-title { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 0.75rem; }
+.why-cards { display: flex; flex-direction: column; gap: 8px; }
+.why-card { background: var(--bg-card); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; }
+.why-card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.why-bar { width: 3px; height: 14px; background: var(--purple); border-radius: 2px; flex-shrink: 0; }
+.why-label { font-size: 12px; font-weight: 500; color: var(--text-primary); }
+.why-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+.pipeline-wrap { border-top: 0.5px solid var(--border); margin-top: 1rem; padding-top: 1rem; }
+.pipeline-label { font-size: 11px; color: var(--text-muted); margin-bottom: 8px; }
+.pipeline-flow { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; }
+.flow-box { display: inline-flex; align-items: center; font-size: 11px; font-weight: 500; padding: 4px 10px; background: var(--bg-secondary); border: 0.5px solid var(--border); border-radius: var(--radius-sm); color: var(--text-secondary); white-space: nowrap; }
+.flow-box.highlight { background: var(--purple-light); border-color: var(--purple-border); color: var(--purple); }
+.flow-cmd { font-family: monospace; font-size: 10px; margin-left: 4px; color: var(--purple); }
+.flow-arrow { font-size: 11px; color: var(--text-muted); }
+
+/* ── CURATION ── */
+.curation-section { margin: 2rem 0; }
+.curation-cards { display: flex; flex-direction: column; gap: 8px; }
+.cur-card { background: var(--bg-card); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; cursor: pointer; transition: border-color 0.12s; }
+.cur-card:hover { border-color: var(--border-hover); }
+.cur-badge { display: inline-block; font-size: 10px; font-weight: 500; padding: 2px 8px; background: #FAEEDA; color: #633806; border-radius: var(--radius-pill); margin-bottom: 6px; }
+.cur-series { font-size: 11px; color: var(--text-muted); margin-bottom: 5px; }
+.cur-title { font-size: 14px; font-weight: 500; color: var(--text-primary); line-height: 1.55; margin-bottom: 8px; }
+.cur-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 6px; }
+.cur-ep-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.cur-ep-btn { font-size: 11px; font-weight: 500; padding: 3px 10px; border: 0.5px solid var(--border-hover); border-radius: var(--radius-pill); background: var(--bg-card); color: var(--text-secondary); cursor: pointer; font-family: inherit; }
+.cur-ep-btn:hover { background: var(--bg-secondary); }
+
+/* ── FILTER / CARDS ── */
+.filter-section { margin: 2rem 0 1rem; }
+.search-input { width: 100%; max-width: 420px; display: block; font-size: 12px; padding: 3px 14px; line-height: 1.4; border: 0.5px solid var(--border-hover); border-radius: var(--radius-pill); background: var(--bg-card); color: var(--text-primary); outline: none; margin-bottom: 0.7rem; font-family: inherit; }
+.search-input:focus { border-color: var(--purple); }
+.search-input::placeholder { color: var(--text-muted); }
+.filter-row { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.filter-label { font-size: 11px; color: var(--text-muted); margin-right: 2px; }
+.pill { font-size: 12px; padding: 3px 12px; border-radius: var(--radius-pill); border: 0.5px solid var(--border-hover); background: var(--bg-card); color: var(--text-secondary); cursor: pointer; transition: all 0.12s; font-family: inherit; }
+.pill:hover { background: var(--bg-secondary); }
+.pill.active { background: var(--purple); border-color: var(--purple); color: var(--purple-light); }
+.section-label { font-size: 11px; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.75rem; }
+.card-list { display: flex; flex-direction: column; gap: 8px; }
+.card { background: var(--bg-card); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; display: flex; align-items: flex-start; gap: 1.25rem; cursor: pointer; transition: border-color 0.12s; }
+.card:hover { border-color: var(--border-hover); }
+.card-left { flex: 1; min-width: 0; }
+.card-right { flex-shrink: 0; padding-top: 2px; }
+.card-date { font-size: 11px; color: var(--text-muted); white-space: nowrap; }
+.tag-row { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 7px; }
+.tag { font-size: 11px; padding: 2px 8px; border-radius: 4px; }
+.tag-topic { background: var(--purple-light); color: var(--purple-dark); }
+.tag-ind { background: var(--bg-secondary); color: var(--text-secondary); border: 0.5px solid var(--border); }
+.card-title { font-size: 14px; font-weight: 500; color: var(--text-primary); line-height: 1.55; margin-bottom: 6px; }
+.card-highlight { font-size: 12px; color: var(--text-secondary); line-height: 1.65; border-left: 2px solid var(--border-hover); padding-left: 10px; }
+.state-msg { font-size: 13px; color: var(--text-muted); text-align: center; padding: 3rem 0; }
+.error-box { font-size: 13px; color: var(--text-secondary); background: var(--bg-secondary); border-radius: var(--radius-sm); padding: 1.5rem; text-align: center; }
+
+/* ── PAGINATION ── */
+.pagination { display: flex; align-items: center; justify-content: center; gap: 5px; margin-top: 1.5rem; }
+.page-btn { font-size: 12px; padding: 4px 10px; border-radius: 6px; border: 0.5px solid var(--border-hover); background: var(--bg-card); color: var(--text-secondary); cursor: pointer; min-width: 30px; text-align: center; font-family: inherit; }
+.page-btn:hover { background: var(--bg-secondary); }
+.page-btn.active { background: var(--purple); border-color: var(--purple); color: var(--purple-light); }
+.page-btn.disabled { opacity: 0.3; cursor: default; pointer-events: none; }
+
+/* ── MODAL ── */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.35); display: flex; align-items: flex-start; justify-content: center; z-index: 100; padding: 2rem 1rem; overflow-y: auto; }
+.modal { background: var(--bg-card); border-radius: var(--radius); border: 0.5px solid var(--border); width: 100%; max-width: 660px; padding: 1.5rem; margin: auto; position: relative; }
+.modal-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 18px; color: var(--text-muted); cursor: pointer; line-height: 1; padding: 2px 6px; }
+.modal-close:hover { color: var(--text-primary); }
+.modal-title { font-size: 15px; font-weight: 500; color: var(--text-primary); line-height: 1.5; margin-bottom: 0.75rem; padding-right: 2rem; }
+.modal-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 1rem; }
+.modal-sec-title { font-size: 10px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.4rem; }
+.modal-highlight { font-size: 13px; color: var(--text-secondary); line-height: 1.7; border-left: 2px solid var(--purple); padding-left: 12px; margin-bottom: 1.25rem; }
+.modal-insight { font-size: 13px; color: var(--text-secondary); line-height: 1.85; }
+.modal-article { font-size: 13px; color: var(--text-secondary); line-height: 1.85; padding-top: 0.75rem; border-top: 0.5px solid var(--border); margin-top: 0.75rem; }
+.modal-loading { font-size: 13px; color: var(--text-muted); text-align: center; padding: 1.5rem; }
+.divider-line { border: none; border-top: 0.5px solid var(--border); margin: 2rem 0; }
+
+@media (max-width: 600px) { .container { padding: 2rem 1rem 4rem; } .meta-bar { gap: 0.5rem; } .meta-divider { margin: 0 0.6rem; } .pipeline-flow { gap: 3px; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HERO -->
+  <p class="eyebrow">Business &amp; Platform Strategy Analysis Archive</p>
+  <h1>Dabeen Kweon — Strategy Archive</h1>
+  <div class="desc">
+    대행사(AE)와 광고 플랫폼(Ad Sales Operation)을 거치며 광고의 Buy Side와 Sell Side, 양측을 경험했습니다.<br>
+    현업 경험을 바탕으로 광고 및 플랫폼 비즈니스 구조에 대한 분석 콘텐츠를 <strong>2025년 8월부터 링크드인에 작성해왔습니다.</strong>
+  </div>
+
+  <!-- META BAR -->
+  <div class="meta-bar">
+    <a class="li-link" href="https://www.linkedin.com/in/dabeenkweon/" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <rect width="16" height="16" rx="3" fill="#0077B5"/>
+        <path d="M4.5 6.5H3V13H4.5V6.5Z" fill="white"/>
+        <circle cx="3.75" cy="4.75" r="0.875" fill="white"/>
+        <path d="M13 13H11.5V9.75C11.5 8.92 10.83 8.25 10 8.25C9.17 8.25 8.5 8.92 8.5 9.75V13H7V6.5H8.5V7.34C8.96 6.8 9.64 6.5 10.38 6.5C11.83 6.5 13 7.67 13 9.12V13Z" fill="white"/>
+      </svg>
+      LinkedIn
+    </a>
+    <div class="meta-stat"><span class="meta-stat-num" id="stat-total">—</span><span class="meta-stat-label">총 아티클</span></div>
+    <div class="meta-divider"></div>
+    <div class="meta-stat"><span class="meta-stat-num" id="stat-cat">—</span><span class="meta-stat-label">전략 카테고리</span></div>
+    <div class="meta-divider"></div>
+    <div class="meta-stat"><span class="meta-stat-num" id="stat-ind">—</span><span class="meta-stat-label">산업 분야</span></div>
+    <div class="meta-divider"></div>
+    <div class="meta-stat"><span class="meta-stat-num">주 1회+</span><span class="meta-stat-label">업데이트</span></div>
+  </div>
+
+  <hr class="divider-line">
+
+  <!-- WHY SECTION -->
+  <div class="why-section">
+    <p class="section-title">이 페이지를 만든 이유</p>
+    <div class="why-cards">
+      <div class="why-card">
+        <div class="why-card-header">
+          <div class="why-bar"></div>
+          <span class="why-label">가독성</span>
+        </div>
+        <p>노션 UI는 글을 모아두고 한눈에 보기엔 좋지만, 검색하고 자유롭게 콘텐츠를 탐색하기엔 제한적이라고 생각했습니다. 조금 더 편하게 읽을 수 있도록 웹페이지로 만들었습니다.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-card-header">
+          <div class="why-bar"></div>
+          <span class="why-label">AI 활용</span>
+        </div>
+        <p>이 웹페이지는 Claude를 활용해 만들었습니다. 페이지를 만드는 과정 자체가 AI 도구를 실무에 활용하는 연습이었습니다. 글 발행부터 페이지 업데이트 전 과정을 자동화하였습니다.</p>
+        <div class="pipeline-wrap">
+          <p class="pipeline-label">업데이트 파이프라인</p>
+          <div class="pipeline-flow">
+            <div class="flow-box">링크드인 글 작성</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-box">Claude <span class="flow-cmd">!노션</span> 실행</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-box">노션 자동 아카이빙</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-box highlight">이 페이지 자동 업데이트</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider-line">
+
+  <!-- CURATION -->
+  <div class="curation-section">
+    <p class="section-title">이 글부터 읽어보세요</p>
+    <div class="curation-cards">
+
+      <div class="cur-card" data-curid="netflix-attention">
+        <div><span class="cur-badge">현직자 픽 · 네이버 PM 공유</span></div>
+        <p class="cur-title">넷플릭스가 새롭게 정의한 광고 지표 '주목도', OTT 경쟁구도를 보여준다</p>
+        <div class="cur-tags">
+          <span class="tag tag-topic">광고 전략</span>
+          <span class="tag tag-ind">OTT</span>
+        </div>
+      </div>
+
+      <div class="cur-card" data-curid="netflix-ip-tving">
+        <p class="cur-title">넷플릭스&파라마운트는 IP, 티빙은 경험 : 포지션이 결정한 성장 레버</p>
+        <div class="cur-tags">
+          <span class="tag tag-topic">플랫폼 전략</span>
+          <span class="tag tag-ind">OTT</span>
+        </div>
+      </div>
+
+      <div class="cur-card" data-curid="retail-media">
+        <p class="cur-title">유통업계는 왜 광고 회사가 되려 할까? : '접점'을 수익화하는 시대</p>
+        <div class="cur-tags">
+          <span class="tag tag-topic">비즈니스 전략</span>
+          <span class="tag tag-ind">유통</span>
+        </div>
+      </div>
+
+      <div class="cur-card" data-curid="ai-ad-series">
+        <p class="cur-series">2편 연작 · AI 광고 비즈니스 분석</p>
+        <p class="cur-title">AI는 광고를 어떻게 다루는가 : 챗GPT와 클로드의 엇갈린 선택</p>
+        <div class="cur-tags">
+          <span class="tag tag-topic">광고 전략</span>
+          <span class="tag tag-ind">AI</span>
+        </div>
+        <div class="cur-ep-row">
+          <button class="cur-ep-btn" data-ep="chatgpt-ad">1편 · 챗GPT 광고 수익화 전략 분석</button>
+          <button class="cur-ep-btn" data-ep="gpt-vs-claude">2편 · GPT vs 클로드, 엇갈린 선택</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider-line">
+
+  <!-- FILTER + ARTICLE LIST -->
+  <div class="filter-section">
+    <input class="search-input" type="text" id="search-input" placeholder="제목, 하이라이트, 태그 키워드 검색">
+    <div class="filter-row">
+      <span class="filter-label">Topic</span>
+      <button class="pill active" data-val="전체">전체</button>
+      <button class="pill" data-val="광고 전략">광고 전략</button>
+      <button class="pill" data-val="플랫폼 전략">플랫폼 전략</button>
+      <button class="pill" data-val="비즈니스 전략">비즈니스 전략</button>
+      <button class="pill" data-val="마케팅 전략">마케팅 전략</button>
+    </div>
+  </div>
+
+  <p class="section-label" id="results-label">불러오는 중...</p>
+  <div class="card-list" id="card-list"><div class="state-msg">Notion에서 데이터를 불러오는 중입니다...</div></div>
+  <div class="pagination" id="pagination"></div>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" style="display:none" role="dialog" aria-modal="true">
+  <div class="modal">
+    <button class="modal-close" id="modal-close" aria-label="닫기">✕</button>
+    <p class="modal-title" id="modal-title"></p>
+    <div class="modal-tags" id="modal-tags"></div>
+    <p class="modal-sec-title">Highlight</p>
+    <p class="modal-highlight" id="modal-highlight"></p>
+    <p class="modal-sec-title">Core Insight</p>
+    <div class="modal-insight" id="modal-insight"><div class="modal-loading">불러오는 중...</div></div>
+    <div id="modal-article-wrap" style="display:none; margin-top:1.25rem;">
+      <p class="modal-sec-title">Article</p>
+      <div class="modal-article" id="modal-article"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const DB_ID = '3058a54b7d2380a08ed0e3b7ceaf0669';
+const PER_PAGE = 5;
+let allArticles = [];
+let page = 1;
+let activeTopic = '전체';
+let searchQ = '';
+
+// 큐레이션 글 제목 키워드 매핑 (노션 제목과 매칭)
+const CURATION_MAP = {
+  'netflix-attention': '주목도',
+  'netflix-ip-tving': '포지션이 결정한 성장 레버',
+  'retail-media': '접점을 수익화',
+  'chatgpt-ad': '오픈AI의 광고 수익화',
+  'gpt-vs-claude': '클로드는 신뢰를 택했다'
+};
+
+async function notionRequest(path, body, method) {
+  const res = await fetch('/api/notion', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ path, body, method: method || (body ? 'POST' : 'GET') })
+  });
+  if (!res.ok) throw new Error('Notion API error: ' + res.status);
+  return res.json();
+}
+
+async function fetchAllArticles() {
+  let results = [];
+  let cursor = undefined;
+  while (true) {
+    const body = { page_size: 100, sorts: [{ property: 'Date', direction: 'descending' }] };
+    if (cursor) body.start_cursor = cursor;
+    const data = await notionRequest('/v1/databases/' + DB_ID + '/query', body);
+    for (const p of data.results) {
+      const props = p.properties;
+      const title = props['Issue Title']?.title?.[0]?.plain_text || '';
+      if (!title || title === 'work') continue;
+      const topics = props['Topic Category']?.multi_select?.map(t => t.name) || [];
+      const industries = props['Industry']?.multi_select?.map(t => t.name) || [];
+      const highlight = props['Highlight']?.rich_text?.[0]?.plain_text || '';
+      const date = props['Date']?.date?.start || '';
+      results.push({ id: p.id, title, topics, industries, highlight, date });
+    }
+    if (!data.has_more) break;
+    cursor = data.next_cursor;
+  }
+  return results;
+}
+
+function extractBlock(block) {
+  const type = block.type;
+  const content = block[type];
+  if (!content) return { text: '', type };
+  const text = content.rich_text ? content.rich_text.map(t => t.plain_text).join('') : '';
+  return { text, type };
+}
+
+async function fetchPageContent(pageId) {
+  const data = await notionRequest('/v1/blocks/' + pageId + '/children', null, 'GET');
+  let insightLines = [];
+  let articleLines = [];
+  let section = null;
+  for (const block of data.results) {
+    const { text, type } = extractBlock(block);
+    if (text.includes('Core Insight')) { section = 'insight'; continue; }
+    if (text.includes('Article') || text.includes('✍️')) { section = 'article'; continue; }
+    if (section === 'insight') {
+      if (text.trim()) insightLines.push({ text: text.trim(), type });
+    } else if (section === 'article') {
+      if (!text.trim()) {
+        articleLines.push({ text: '', type: 'empty' });
+      } else {
+        const lines = text.split('\n');
+        if (lines.length > 1) {
+          lines.forEach(function(line) {
+            if (line.trim()) articleLines.push({ text: line.trim(), type: 'list_item' });
+          });
+        } else {
+          articleLines.push({ text: text.trim(), type });
+        }
+      }
+    }
+  }
+  return {
+    insight: insightLines.length ? insightLines : null,
+    article: articleLines.length ? articleLines : null
+  };
+}
+
+function renderLines(lines) {
+  return lines.map(function(item) {
+    var text = item.text;
+    var type = item.type;
+    if (type === 'empty' || !text) return '<div style="height:0.6rem"></div>';
+    if (text.startsWith('cf.') || text.startsWith('참고')) return '<p style="margin-top:1rem;font-size:12px;color:var(--text-muted)">' + text + '</p>';
+    if (type === 'heading_3') return '<p style="font-size:14px;font-weight:500;color:var(--text-primary);margin:1rem 0 0.4rem">' + text + '</p>';
+    if (type === 'heading_2') return '<p style="font-size:15px;font-weight:500;color:var(--text-primary);margin:1.2rem 0 0.4rem">' + text + '</p>';
+    if (type === 'list_item') return '<p style="margin-bottom:0.3rem;padding-left:0.25rem">' + text + '</p>';
+    return '<p style="margin-bottom:0.5rem">' + text + '</p>';
+  }).join('');
+}
+
+function fmtDate(d) { return d ? d.replace(/-/g, '.') : ''; }
+
+function filtered() {
+  return allArticles.filter(function(a) {
+    var topicOk = activeTopic === '전체' || a.topics.includes(activeTopic);
+    var q = searchQ.trim().toLowerCase();
+    var searchOk = !q ||
+      a.title.toLowerCase().includes(q) ||
+      a.highlight.toLowerCase().includes(q) ||
+      a.topics.some(function(t) { return t.toLowerCase().includes(q); }) ||
+      a.industries.some(function(i) { return i.toLowerCase().includes(q); });
+    return topicOk && searchOk;
+  });
+}
+
+function updateStats() {
+  document.getElementById('stat-total').textContent = allArticles.length;
+  document.getElementById('stat-cat').textContent = new Set(allArticles.flatMap(function(a) { return a.topics; })).size;
+  document.getElementById('stat-ind').textContent = new Set(allArticles.flatMap(function(a) { return a.industries; })).size;
+}
+
+function render() {
+  var list = filtered();
+  var total = list.length;
+  var totalPages = Math.max(1, Math.ceil(total / PER_PAGE));
+  if (page > totalPages) page = 1;
+  document.getElementById('results-label').textContent = '아티클 · ' + total + '건';
+  var items = list.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+  var el = document.getElementById('card-list');
+  if (!items.length) {
+    el.innerHTML = '<div class="state-msg">검색 결과가 없습니다.</div>';
+    document.getElementById('pagination').innerHTML = '';
+    return;
+  }
+  el.innerHTML = items.map(function(a) {
+    return '<div class="card" data-id="' + a.id + '" tabindex="0" role="button">' +
+      '<div class="card-left">' +
+      '<div class="tag-row">' +
+      a.topics.map(function(t) { return '<span class="tag tag-topic">' + t + '</span>'; }).join('') +
+      a.industries.map(function(i) { return '<span class="tag tag-ind">' + i + '</span>'; }).join('') +
+      '</div>' +
+      '<p class="card-title">' + a.title + '</p>' +
+      (a.highlight ? '<p class="card-highlight">' + a.highlight + '</p>' : '') +
+      '</div>' +
+      '<div class="card-right"><span class="card-date">' + fmtDate(a.date) + '</span></div>' +
+      '</div>';
+  }).join('');
+  el.querySelectorAll('.card').forEach(function(card) {
+    card.addEventListener('click', function() { openModal(card.dataset.id); });
+    card.addEventListener('keydown', function(e) { if (e.key === 'Enter') openModal(card.dataset.id); });
+  });
+  renderPagination(totalPages);
+}
+
+function renderPagination(totalPages) {
+  var pag = document.getElementById('pagination');
+  if (totalPages <= 1) { pag.innerHTML = ''; return; }
+  var html = '<button class="page-btn ' + (page===1?'disabled':'') + '" id="btn-prev">‹</button>';
+  for (var i = 1; i <= totalPages; i++) {
+    html += '<button class="page-btn ' + (i===page?'active':'') + '" data-p="' + i + '">' + i + '</button>';
+  }
+  html += '<button class="page-btn ' + (page===totalPages?'disabled':'') + '" id="btn-next">›</button>';
+  pag.innerHTML = html;
+  pag.querySelectorAll('[data-p]').forEach(function(b) {
+    b.addEventListener('click', function() { page = +b.dataset.p; render(); });
+  });
+  var prev = pag.querySelector('#btn-prev');
+  var next = pag.querySelector('#btn-next');
+  if (prev) prev.addEventListener('click', function() { if(page>1){page--;render();} });
+  if (next) next.addEventListener('click', function() { if(page<totalPages){page++;render();} });
+}
+
+async function openModal(id) {
+  var a = allArticles.find(function(x) { return x.id === id; });
+  if (!a) return;
+  document.getElementById('modal-title').textContent = a.title;
+  document.getElementById('modal-highlight').textContent = a.highlight;
+  document.getElementById('modal-tags').innerHTML =
+    a.topics.map(function(t) { return '<span class="tag tag-topic">' + t + '</span>'; }).join('') +
+    a.industries.map(function(i) { return '<span class="tag tag-ind">' + i + '</span>'; }).join('');
+  document.getElementById('modal-insight').innerHTML = '<div class="modal-loading">불러오는 중...</div>';
+  document.getElementById('modal-article-wrap').style.display = 'none';
+  document.getElementById('modal-overlay').style.display = 'flex';
+  document.getElementById('modal-overlay').scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+  try {
+    var result = await fetchPageContent(id);
+    var insight = result.insight;
+    var article = result.article;
+    document.getElementById('modal-insight').innerHTML = insight
+      ? insight.map(function(item) { return '<p style="margin-bottom:0.5rem">• ' + item.text + '</p>'; }).join('')
+      : '<p style="color:var(--text-muted)">내용을 불러올 수 없습니다.</p>';
+    if (article && article.length) {
+      document.getElementById('modal-article').innerHTML = renderLines(article);
+      document.getElementById('modal-article-wrap').style.display = 'block';
+    }
+  } catch(e) {
+    document.getElementById('modal-insight').textContent = '내용을 불러올 수 없습니다.';
+  }
+}
+
+// 큐레이션 카드 클릭 → 노션 제목 키워드로 해당 글 찾아 모달 오픈
+function openCurationModal(keyword) {
+  var a = allArticles.find(function(x) { return x.title.includes(keyword); });
+  if (a) { openModal(a.id); }
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+document.getElementById('modal-close').addEventListener('click', closeModal);
+document.getElementById('modal-overlay').addEventListener('click', function(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModal();
+});
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+// 큐레이션 카드 이벤트
+document.querySelectorAll('.cur-card').forEach(function(card) {
+  card.addEventListener('click', function(e) {
+    if (e.target.classList.contains('cur-ep-btn')) return;
+    var curid = card.dataset.curid;
+    if (curid === 'ai-ad-series') return;
+    var keyword = CURATION_MAP[curid];
+    if (keyword) openCurationModal(keyword);
+  });
+});
+
+document.querySelectorAll('.cur-ep-btn').forEach(function(btn) {
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var keyword = CURATION_MAP[btn.dataset.ep];
+    if (keyword) openCurationModal(keyword);
+  });
+});
+
+// 필터 버튼
+document.querySelectorAll('.pill').forEach(function(pill) {
+  pill.addEventListener('click', function() {
+    document.querySelectorAll('.pill').forEach(function(p) { p.classList.remove('active'); });
+    pill.classList.add('active');
+    activeTopic = pill.dataset.val;
+    page = 1; render();
+  });
+});
+
+var debounce;
+document.getElementById('search-input').addEventListener('input', function(e) {
+  clearTimeout(debounce);
+  debounce = setTimeout(function() { searchQ = e.target.value; page = 1; render(); }, 200);
+});
+
+fetchAllArticles().then(function(articles) {
+  allArticles = articles;
+  updateStats();
+  render();
+}).catch(function(err) {
+  document.getElementById('card-list').innerHTML = '<div class="error-box">데이터를 불러오지 못했습니다.<br><small style="color:var(--text-muted)">' + err.message + '</small></div>';
+  document.getElementById('results-label').textContent = '오류 발생';
+});
+</script>
+</body>
+</html>
