@@ -45,6 +45,8 @@ h1 { font-size: clamp(24px, 4vw, 32px); font-weight: 500; color: var(--text-prim
 .meta-stat-label { font-size: 10px; color: var(--text-muted); margin-top: 1px; }
 
 /* ── WHY SECTION ── */
+.pipeline-detail-list { font-size: 12px; color: var(--text-secondary); line-height: 1.7; padding-left: 1rem; margin: 0; display: flex; flex-direction: column; gap: 2px; }
+.pipeline-cmd { font-size: 10px; font-weight: 500; background: var(--purple-light); color: var(--purple); padding: 0px 5px; border-radius: 3px; border: 0.5px solid var(--purple-border); }
 .why-section { margin: 2.5rem 0; }
 .section-title { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 0.75rem; }
 .why-cards { display: flex; flex-direction: column; gap: 8px; }
@@ -175,16 +177,52 @@ h1 { font-size: clamp(24px, 4vw, 32px); font-weight: 500; color: var(--text-prim
           <span class="why-label">AI 도구 활용</span>
         </div>
         <p>이 웹페이지는 Claude를 활용해 직접 만들었습니다. 기획부터 구현까지 AI 도구를 실제 결과물에 적용하는 과정 자체를 하나의 실험으로 접근했고, 그 산출물이 이 아카이브입니다.</p>
- <div class="pipeline-wrap">
+<div class="pipeline-wrap">
   <p class="pipeline-label">글 발행부터 Strategy Archive 업데이트까지 전 과정 자동화</p>
   <div class="pipeline-flow">
     <div class="flow-box">링크드인 글 작성</div>
     <span class="flow-arrow">→</span>
-   <div class="flow-box">Claude에&nbsp;<strong style="color:var(--purple);">!노션</strong>&nbsp;실행</div>
+    <div class="flow-box">Claude에&nbsp;<strong style="color:var(--purple);">!노션</strong>&nbsp;실행</div>
     <span class="flow-arrow">→</span>
     <div class="flow-box">노션 자동 아카이빙</div>
     <span class="flow-arrow">→</span>
     <div class="flow-box hl">Strategy Archive 자동 업데이트</div>
+  </div>
+  <button class="pipeline-toggle" onclick="togglePipeline()" style="margin-top: 12px; font-size: 11px; color: var(--purple); background: none; border: none; cursor: pointer; padding: 0; font-family: inherit; display: flex; align-items: center; gap: 4px;">
+    <span id="pipeline-icon">▼</span> 어떻게 만들었나요?
+  </button>
+  <div id="pipeline-detail" style="display: none; margin-top: 12px; border-top: 0.5px solid var(--border); padding-top: 12px; display: none;">
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div>
+        <p style="font-size: 11px; font-weight: 500; color: var(--purple); margin-bottom: 6px;">① 콘텐츠 작성 자동화</p>
+        <ul class="pipeline-detail-list">
+          <li>Claude Project 지침에 글 양식·평가기준 규칙 설계</li>
+          <li><span class="pipeline-cmd">!이슈</span> 명령어로 금일 기준 14일 이내 광고 및 플랫폼 비즈니스 관련 이슈 서치 및 링크드인 발행 양식에 맞는 글 초안 생성</li>
+        </ul>
+      </div>
+      <div style="border-top: 0.5px solid var(--border); padding-top: 12px;">
+        <p style="font-size: 11px; font-weight: 500; color: var(--purple); margin-bottom: 6px;">② 노션 아카이빙 자동화</p>
+        <ul class="pipeline-detail-list">
+          <li>Notion API 연동</li>
+          <li>페이지 구조·변환 규칙·역할 분담을 Project 지침으로 설계</li>
+          <li><span class="pipeline-cmd">!노션</span> 실행 시 자동으로 Notion 데이터베이스에 저장</li>
+        </ul>
+      </div>
+      <div style="border-top: 0.5px solid var(--border); padding-top: 12px;">
+        <p style="font-size: 11px; font-weight: 500; color: var(--purple); margin-bottom: 6px;">③ 웹페이지 구현 (Vibe Coding)</p>
+        <ul class="pipeline-detail-list">
+          <li>Claude와 PRD 작성 → 디자인 목업 확인 및 수정 반영</li>
+          <li>GitHub + Vercel 배포 → 기능 QA 및 오류 수정</li>
+        </ul>
+      </div>
+      <div style="border-top: 0.5px solid var(--border); padding-top: 12px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+        <span style="font-size: 11px; font-weight: 500; color: var(--text-secondary);">사용 도구</span>
+        <span style="font-size: 11px; font-weight: 500; padding: 3px 10px; background: var(--bg-secondary); border: 0.5px solid var(--border-hover); border-radius: var(--radius-pill); color: var(--text-secondary);">Claude Project</span>
+        <span style="font-size: 11px; font-weight: 500; padding: 3px 10px; background: var(--bg-secondary); border: 0.5px solid var(--border-hover); border-radius: var(--radius-pill); color: var(--text-secondary);">Notion API</span>
+        <span style="font-size: 11px; font-weight: 500; padding: 3px 10px; background: var(--bg-secondary); border: 0.5px solid var(--border-hover); border-radius: var(--radius-pill); color: var(--text-secondary);">GitHub</span>
+        <span style="font-size: 11px; font-weight: 500; padding: 3px 10px; background: var(--bg-secondary); border: 0.5px solid var(--border-hover); border-radius: var(--radius-pill); color: var(--text-secondary);">Vercel</span>
+      </div>
+    </div>
   </div>
 </div>
       </div>
@@ -545,6 +583,17 @@ fetchAllArticles().then(function(articles) {
   document.getElementById('card-list').innerHTML = '<div class="error-box">데이터를 불러오지 못했습니다.<br><small style="color:var(--text-muted)">' + err.message + '</small></div>';
   document.getElementById('results-label').textContent = '오류 발생';
 });
+  function togglePipeline() {
+  var detail = document.getElementById('pipeline-detail');
+  var icon = document.getElementById('pipeline-icon');
+  if (detail.style.display === 'none') {
+    detail.style.display = 'block';
+    icon.textContent = '▲';
+  } else {
+    detail.style.display = 'none';
+    icon.textContent = '▼';
+  }
+}
 </script>
 </body>
 </html>
