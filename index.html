@@ -387,7 +387,7 @@ async function fetchPageContent(pageId) {
   for (const block of data.results) {
     const { text, type } = extractBlock(block);
     if (text.includes('Core Insight')) { section = 'insight'; continue; }
-    if (text.includes('Article') || text.includes('✍️')) { section = 'article'; continue; }
+    if (text.includes('✍️Article') || (text.includes('Article') && (type === 'heading_2'))) { section = 'article'; continue; }
     if (section === 'insight') {
       if (text.trim()) insightLines.push({ text: text.trim(), type });
     } else if (section === 'article') {
