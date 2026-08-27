@@ -131,11 +131,11 @@ h1 { font-size: clamp(24px, 4vw, 32px); font-weight: 500; color: var(--text-prim
 
   <!-- HERO -->
   <p class="eyebrow">Business &amp; Platform Strategy Analysis Archive</p>
-  <h1>Dabeen Kweon — Strategy Archive</h1>
-  <p class="hero-tagline">대행사와 광고 플랫폼을 거치며, 광고 비즈니스가 수익을 만드는 방식을 분석합니다.</p>
+  <h1>Dabeen Kweon Portfolio</h1>
+  <p class="hero-tagline"> 권다빈 | 경력 1년 9개월</p>
   <div class="desc">
     대행사(AE)와 광고 플랫폼(Ad Sales Operation)을 거치며 광고의 Buy Side와 Sell Side, 양측을 경험했습니다.<br>
-    현업 경험을 바탕으로 광고 및 플랫폼 비즈니스 구조에 대한 분석 콘텐츠를 <strong>2025년 8월부터 링크드인에 작성해왔습니다.</strong>
+    현업 경험을 바탕으로 <strong>2025년 8월부터 링크드인에 분석 콘텐츠를 써왔고</strong>, 개인 학습 목적으로 광고 상품 기획 및 개선안을 작성했습니다.
   </div>
 
   <!-- META BAR -->
@@ -151,11 +151,9 @@ h1 { font-size: clamp(24px, 4vw, 32px); font-weight: 500; color: var(--text-prim
     </a>
     <div class="meta-stat"><span class="meta-stat-num" id="stat-total">—</span><span class="meta-stat-label">총 아티클</span></div>
     <div class="meta-divider"></div>
-    <div class="meta-stat"><span class="meta-stat-num" id="stat-cat">—</span><span class="meta-stat-label">전략 카테고리</span></div>
+    <div class="meta-stat"><span class="meta-stat-num">2</span><span class="meta-stat-label">프로젝트</span></div>
     <div class="meta-divider"></div>
-    <div class="meta-stat"><span class="meta-stat-num" id="stat-ind">—</span><span class="meta-stat-label">산업 분야</span></div>
-    <div class="meta-divider"></div>
-    <div class="meta-stat"><span class="meta-stat-num">주 1회+</span><span class="meta-stat-label">업데이트</span></div>
+    <div class="meta-stat"><span class="meta-stat-num">2025.08~</span><span class="meta-stat-label">활동 기간</span></div>
   </div>
 
   <hr class="divider-line">
@@ -439,10 +437,8 @@ function filtered() {
   });
 }
 
-function updateStats() {
+  function updateStats() {
   document.getElementById('stat-total').textContent = allArticles.length;
-  document.getElementById('stat-cat').textContent = new Set(allArticles.flatMap(function(a) { return a.topics; })).size;
-  document.getElementById('stat-ind').textContent = new Set(allArticles.flatMap(function(a) { return a.industries; })).size;
 }
 
 function render() {
