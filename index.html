@@ -19,7 +19,7 @@
 body { font-family: -apple-system, 'Apple SD Gothic Neo', 'Pretendard', sans-serif; background: var(--bg); color: var(--text-primary); line-height: 1.6; min-height: 100vh; }
 .container { max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
 .cur-subtitle { font-size: 12px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 10px; font-style: italic; }
-  
+
 /* ── PIPELINE ── */
 .pipeline-wrap { background: var(--bg-secondary); border-radius: var(--radius-sm); padding: 14px 16px; margin-top: 16px; }
 .pipeline-label { font-size: 11px; font-weight: 500; color: var(--purple); margin-bottom: 12px; }
@@ -35,6 +35,11 @@ h1 { font-size: clamp(24px, 4vw, 32px); font-weight: 500; color: var(--text-prim
 .desc { font-size: 13px; color: var(--text-secondary); line-height: 1.85; }
 .desc strong { font-weight: 500; color: var(--text-primary); }
 
+/* ── AUTO TOGGLE (신규) ── */
+.auto-toggle { margin-top: 1.25rem; }
+.pipeline-toggle { font-size: 12px; font-weight: 500; color: var(--purple); background: none; border: none; cursor: pointer; padding: 0; font-family: inherit; display: flex; align-items: center; gap: 6px; }
+.auto-toggle-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.85; margin-bottom: 12px; }
+
 /* ── META BAR ── */
 .meta-bar { display: flex; align-items: center; flex-wrap: wrap; gap: 0; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 0.5px solid var(--border); }
 .li-link { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-secondary); text-decoration: none; margin-right: 1.5rem; }
@@ -44,24 +49,21 @@ h1 { font-size: clamp(24px, 4vw, 32px); font-weight: 500; color: var(--text-prim
 .meta-stat-num { font-size: 18px; font-weight: 500; color: var(--text-primary); }
 .meta-stat-label { font-size: 10px; color: var(--text-muted); margin-top: 1px; }
 
-/* ── WHY SECTION ── */
+.section-title { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 0.75rem; }
 .pipeline-detail-list { font-size: 12px; color: var(--text-secondary); line-height: 1.7; padding-left: 1rem; margin: 0; display: flex; flex-direction: column; gap: 2px; }
 .pipeline-cmd { font-size: 10px; font-weight: 500; background: var(--purple-light); color: var(--purple); padding: 0px 5px; border-radius: 3px; border: 0.5px solid var(--purple-border); }
-.why-section { margin: 2.5rem 0; }
-.section-title { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 0.75rem; }
-.why-cards { display: flex; flex-direction: column; gap: 8px; }
-.why-card { background: var(--bg-card); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; }
-.why-card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
-.why-bar { width: 3px; height: 14px; background: var(--purple); border-radius: 2px; flex-shrink: 0; }
-.why-label { font-size: 12px; font-weight: 500; color: var(--text-primary); }
-.why-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
-.pipeline-wrap { border-top: 0.5px solid var(--border); margin-top: 1rem; padding-top: 1rem; }
-.pipeline-label { font-size: 11px; color: var(--text-muted); margin-bottom: 8px; }
-.pipeline-flow { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; }
-.flow-box { display: inline-flex; align-items: center; font-size: 11px; font-weight: 500; padding: 4px 10px; background: var(--bg-secondary); border: 0.5px solid var(--border); border-radius: var(--radius-sm); color: var(--text-secondary); white-space: nowrap; }
-.flow-box.highlight { background: var(--purple-light); border-color: var(--purple-border); color: var(--purple); }
-.flow-cmd { font-family: monospace; font-size: 10px; margin-left: 4px; color: var(--purple); }
-.flow-arrow { font-size: 11px; color: var(--text-muted); }
+
+/* ── PROJECTS (신규) ── */
+.proj-section { margin: 2rem 0; }
+.proj-list { display: flex; flex-direction: column; }
+.proj-item { padding: 1.25rem 0; border-bottom: 0.5px solid var(--border); }
+.proj-item:last-child { border-bottom: none; }
+.proj-index { font-size: 11px; color: var(--purple); font-weight: 500; margin-bottom: 8px; letter-spacing: 0.02em; }
+.proj-title { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 8px; line-height: 1.55; }
+.proj-hook { font-size: 13px; color: var(--text-secondary); line-height: 1.75; margin-bottom: 10px; }
+.proj-hook strong { font-weight: 500; color: var(--purple); }
+.proj-link { font-size: 11px; font-weight: 500; color: var(--purple); text-decoration: none; }
+.proj-link:hover { text-decoration: underline; }
 
 /* ── CURATION ── */
 .curation-section { margin: 2rem 0; }
@@ -132,7 +134,7 @@ h1 { font-size: clamp(24px, 4vw, 32px); font-weight: 500; color: var(--text-prim
   <!-- HERO -->
   <p class="eyebrow">Business &amp; Platform Strategy Analysis Archive</p>
   <h1>Dabeen Kweon Portfolio</h1>
-  <p class="hero-tagline"> 권다빈 | Buy-side와 Sell-side를 오가며 광고 비즈니스 구조를 분석합니다.</p>
+  <p class="hero-tagline">권다빈 | 데이터로 광고 비즈니스의 문제를 정의하고, 개선으로 만듭니다</p>
   <div class="desc">
   대행사 AE(Buy-side)로 광고 집행 구조를, 뷰티 플랫폼 Ad Sales Operation(Sell-side)으로 매체 수익 구조를 경험했습니다.
   양측을 경험하며 제 강점은 <strong>데이터로 문제를 정의하고, 이를 반복 가능한 개선으로 만드는 일이란 것</strong>을 확인했습니다.
@@ -141,6 +143,60 @@ h1 { font-size: clamp(24px, 4vw, 32px); font-weight: 500; color: var(--text-prim
   <br><br>
   1) 광고/플랫폼 비즈니스 분석 인사이트 콘텐츠 50개+ (링크드인 연재, 2025.08~)<br>
   2) 개인 학습 목적으로 직접 기획해 본 광고 상품 및 개선안
+  </div>
+
+  <!-- AUTO TOGGLE (신규: 이 페이지를 만든 이유 → 여기로 이동) -->
+  <div class="auto-toggle">
+    <button class="pipeline-toggle" onclick="togglePipeline()">
+      <span id="pipeline-icon">▼</span> 이 아카이브, Claude로 직접 구현했습니다
+    </button>
+    <div id="pipeline-detail" style="display: none; margin-top: 12px;">
+      <p class="auto-toggle-desc">이 웹페이지는 Claude를 활용해 직접 만들었습니다. 기획부터 구현까지 AI 도구를 실제 결과물에 적용하는 과정 자체를 하나의 실험으로 접근했고, 그 산출물이 이 아카이브입니다.</p>
+      <div class="pipeline-wrap" style="margin-top: 0;">
+        <p class="pipeline-label">글 발행부터 Strategy Archive 업데이트까지 전 과정 자동화</p>
+        <div class="pipeline-flow">
+          <div class="flow-box">링크드인 글 작성</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-box">Claude에&nbsp;<strong style="color:var(--purple);">!노션</strong>&nbsp;실행</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-box">노션 자동 아카이빙</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-box hl">Strategy Archive 자동 업데이트</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 12px;">
+          <div>
+            <p style="font-size: 11px; font-weight: 500; color: var(--purple); margin-bottom: 6px;">① 콘텐츠 작성 자동화</p>
+            <ul class="pipeline-detail-list">
+              <li>Claude Project 지침에 글 양식·평가기준 규칙 설계</li>
+              <li><span class="pipeline-cmd">!이슈</span> 명령어로 금일 기준 14일 이내 광고 및 플랫폼 비즈니스 관련 이슈 서치</li>
+              <li>링크드인 발행 양식에 맞는 글 초안 생성</li>
+            </ul>
+          </div>
+          <div style="border-top: 0.5px solid var(--border); padding-top: 12px;">
+            <p style="font-size: 11px; font-weight: 500; color: var(--purple); margin-bottom: 6px;">② 노션 아카이빙 자동화</p>
+            <ul class="pipeline-detail-list">
+              <li>Notion API-Claude 연동</li>
+              <li>페이지 구조·변환 규칙·역할 분담을 Claude Project 지침으로 설계</li>
+              <li><span class="pipeline-cmd">!노션</span> 실행 시 자동으로 Notion 데이터베이스에 저장</li>
+            </ul>
+          </div>
+          <div style="border-top: 0.5px solid var(--border); padding-top: 12px;">
+            <p style="font-size: 11px; font-weight: 500; color: var(--purple); margin-bottom: 6px;">③ 웹페이지 구현 (Vibe Coding)</p>
+            <ul class="pipeline-detail-list">
+              <li>Claude와 PRD 작성 → 디자인 목업 확인 및 수정 반영</li>
+              <li>GitHub + Vercel 배포 → 기능 QA 및 오류 수정</li>
+            </ul>
+          </div>
+          <div style="border-top: 0.5px solid var(--border); padding-top: 12px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+            <span style="font-size: 11px; font-weight: 500; color: var(--text-secondary);">사용 도구</span>
+            <span style="font-size: 11px; font-weight: 500; padding: 3px 10px; background: #2C2C2A; border-radius: var(--radius-pill); color: #F1EFE8;">Claude Project</span>
+            <span style="font-size: 11px; font-weight: 500; padding: 3px 10px; background: #2C2C2A; border-radius: var(--radius-pill); color: #F1EFE8;">Notion API</span>
+            <span style="font-size: 11px; font-weight: 500; padding: 3px 10px; background: #2C2C2A; border-radius: var(--radius-pill); color: #F1EFE8;">GitHub</span>
+            <span style="font-size: 11px; font-weight: 500; padding: 3px 10px; background: #2C2C2A; border-radius: var(--radius-pill); color: #F1EFE8;">Vercel</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- META BAR -->
@@ -163,73 +219,40 @@ h1 { font-size: clamp(24px, 4vw, 32px); font-weight: 500; color: var(--text-prim
 
   <hr class="divider-line">
 
-  <!-- WHY SECTION -->
-  <div class="why-section">
-    <p class="section-title">이 페이지를 만든 이유</p>
-    <div class="why-cards">
-      <div class="why-card">
-        <div class="why-card-header">
-          <div class="why-bar"></div>
-          <span class="why-label">콘텐츠 접근성</span>
+  <!-- PROJECTS (신규) -->
+  <div class="proj-section">
+    <p class="section-title">Projects</p>
+    <div class="proj-list">
+
+      <div class="proj-item">
+        <p class="proj-index">01 · IF SCENARIO</p>
+        <p class="proj-title">네이버웹툰 컷츠, 광고가 생긴다면?</p>
+        <p class="proj-hook">
+          광고가 하나도 없는 지면에, 형태·과금·타겟팅까지 직접 설계해
+          <strong>월 1,700만~2,200만 원 규모의 매출 구조</strong>로 추정까지 이어봤습니다.
+        </p>
+        <div class="tag-row" style="margin-bottom:10px;">
+          <span class="tag tag-topic">상품 기획</span>
+          <span class="tag tag-ind">과금 설계</span>
+          <span class="tag tag-ind">수익 추정</span>
         </div>
-        <p>링크드인에 발행한 콘텐츠를 노션으로 아카이빙해왔습니다. 다만 노션은 콘텐츠를 쌓아두기엔 편하지만, 외부에 공유하거나 자유롭게 탐색하기엔 제한적이었습니다. 더 나은 접근성을 위해 노션 데이터베이스를 웹페이지로 재구축했습니다.</p>
+        <a class="proj-link" href="/naver-webtoon-cuts-ad-proposal.pdf" target="_blank" rel="noopener">기획안 전체보기 (PDF) →</a>
       </div>
-      <div class="why-card">
-        <div class="why-card-header">
-          <div class="why-bar"></div>
-          <span class="why-label">AI 도구 활용</span>
+
+      <div class="proj-item">
+        <p class="proj-index">02 · IF SCENARIO</p>
+        <p class="proj-title">TVING + Wavve 통합 광고, 이렇게 개선해보면 어떨까?</p>
+        <p class="proj-hook">
+          모든 타겟팅 옵션이 똑같이 5,000원인 게 이상했습니다.
+          가격을 <strong>차등화하려면 왜 세그먼트도 함께 늘어나야 하는지</strong>, 그 연결고리를 짚어봤습니다.
+        </p>
+        <div class="tag-row" style="margin-bottom:10px;">
+          <span class="tag tag-topic">가격 정책</span>
+          <span class="tag tag-ind">세그먼트 설계</span>
         </div>
-        <p>이 웹페이지는 Claude를 활용해 직접 만들었습니다. 기획부터 구현까지 AI 도구를 실제 결과물에 적용하는 과정 자체를 하나의 실험으로 접근했고, 그 산출물이 이 아카이브입니다.</p>
-<div class="pipeline-wrap">
-  <p class="pipeline-label">글 발행부터 Strategy Archive 업데이트까지 전 과정 자동화</p>
-  <div class="pipeline-flow">
-    <div class="flow-box">링크드인 글 작성</div>
-    <span class="flow-arrow">→</span>
-    <div class="flow-box">Claude에&nbsp;<strong style="color:var(--purple);">!노션</strong>&nbsp;실행</div>
-    <span class="flow-arrow">→</span>
-    <div class="flow-box">노션 자동 아카이빙</div>
-    <span class="flow-arrow">→</span>
-    <div class="flow-box hl">Strategy Archive 자동 업데이트</div>
-  </div>
-  <button class="pipeline-toggle" onclick="togglePipeline()" style="margin-top: 12px; font-size: 11px; color: var(--purple); background: none; border: none; cursor: pointer; padding: 0; font-family: inherit; display: flex; align-items: center; gap: 4px;">
-    <span id="pipeline-icon">▼</span> 어떻게 만들었나요?
-  </button>
-  <div id="pipeline-detail" style="display: none; margin-top: 12px; border-top: 0.5px solid var(--border); padding-top: 12px; display: none;">
-    <div style="display: flex; flex-direction: column; gap: 12px;">
-      <div>
-        <p style="font-size: 11px; font-weight: 500; color: var(--purple); margin-bottom: 6px;">① 콘텐츠 작성 자동화</p>
-        <ul class="pipeline-detail-list">
-          <li>Claude Project 지침에 글 양식·평가기준 규칙 설계</li>
-          <li><span class="pipeline-cmd">!이슈</span> 명령어로 금일 기준 14일 이내 광고 및 플랫폼 비즈니스 관련 이슈 서치</li>
-          <li>링크드인 발행 양식에 맞는 글 초안 생성</li>
-        </ul>
+        <a class="proj-link" href="https://www.linkedin.com/feed/update/urn:li:activity:7465661493099872256/" target="_blank" rel="noopener">LinkedIn에서 읽기 →</a>
       </div>
-      <div style="border-top: 0.5px solid var(--border); padding-top: 12px;">
-        <p style="font-size: 11px; font-weight: 500; color: var(--purple); margin-bottom: 6px;">② 노션 아카이빙 자동화</p>
-        <ul class="pipeline-detail-list">
-          <li>Notion API-Claude 연동</li>
-          <li>페이지 구조·변환 규칙·역할 분담을 Claude Project 지침으로 설계</li>
-          <li><span class="pipeline-cmd">!노션</span> 실행 시 자동으로 Notion 데이터베이스에 저장</li>
-        </ul>
-      </div>
-      <div style="border-top: 0.5px solid var(--border); padding-top: 12px;">
-        <p style="font-size: 11px; font-weight: 500; color: var(--purple); margin-bottom: 6px;">③ 웹페이지 구현 (Vibe Coding)</p>
-        <ul class="pipeline-detail-list">
-          <li>Claude와 PRD 작성 → 디자인 목업 확인 및 수정 반영</li>
-          <li>GitHub + Vercel 배포 → 기능 QA 및 오류 수정</li>
-        </ul>
-      </div>
-      <div style="border-top: 0.5px solid var(--border); padding-top: 12px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
-        <span style="font-size: 11px; font-weight: 500; color: var(--text-secondary);">사용 도구</span>
-<span style="font-size: 11px; font-weight: 500; padding: 3px 10px; background: #2C2C2A; border-radius: var(--radius-pill); color: #F1EFE8;">Claude Project</span>
-<span style="font-size: 11px; font-weight: 500; padding: 3px 10px; background: #2C2C2A; border-radius: var(--radius-pill); color: #F1EFE8;">Notion API</span>
-<span style="font-size: 11px; font-weight: 500; padding: 3px 10px; background: #2C2C2A; border-radius: var(--radius-pill); color: #F1EFE8;">GitHub</span>
-<span style="font-size: 11px; font-weight: 500; padding: 3px 10px; background: #2C2C2A; border-radius: var(--radius-pill); color: #F1EFE8;">Vercel</span>
-      </div>
-    </div>
-  </div>
-</div>
-      </div>
+
     </div>
   </div>
 
@@ -332,7 +355,6 @@ let page = 1;
 let activeTopic = '전체';
 let searchQ = '';
 
-// 큐레이션 글 제목 키워드 매핑 (노션 제목과 매칭)
 const CURATION_MAP = {
   'netflix-attention': '주목도',
   'youtube-ctv': '쇼퍼블 CTV',
@@ -442,7 +464,7 @@ function filtered() {
   });
 }
 
-  function updateStats() {
+function updateStats() {
   document.getElementById('stat-total').textContent = allArticles.length;
 }
 
@@ -526,7 +548,6 @@ async function openModal(id) {
   }
 }
 
-// 큐레이션 카드 클릭 → 노션 제목 키워드로 해당 글 찾아 모달 오픈
 function openCurationModal(keyword) {
   var a = allArticles.find(function(x) { return x.title.includes(keyword); });
   if (a) { openModal(a.id); }
@@ -543,7 +564,6 @@ document.getElementById('modal-overlay').addEventListener('click', function(e) {
 });
 document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 
-// 큐레이션 카드 이벤트
 document.querySelectorAll('.cur-card').forEach(function(card) {
   card.addEventListener('click', function(e) {
     if (e.target.classList.contains('cur-ep-btn')) return;
@@ -562,7 +582,6 @@ document.querySelectorAll('.cur-ep-btn').forEach(function(btn) {
   });
 });
 
-// 필터 버튼
 document.querySelectorAll('.pill').forEach(function(pill) {
   pill.addEventListener('click', function() {
     document.querySelectorAll('.pill').forEach(function(p) { p.classList.remove('active'); });
@@ -586,7 +605,8 @@ fetchAllArticles().then(function(articles) {
   document.getElementById('card-list').innerHTML = '<div class="error-box">데이터를 불러오지 못했습니다.<br><small style="color:var(--text-muted)">' + err.message + '</small></div>';
   document.getElementById('results-label').textContent = '오류 발생';
 });
-  function togglePipeline() {
+
+function togglePipeline() {
   var detail = document.getElementById('pipeline-detail');
   var icon = document.getElementById('pipeline-icon');
   if (detail.style.display === 'none') {
